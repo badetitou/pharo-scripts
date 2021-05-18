@@ -24,10 +24,10 @@ worldMenuSectionsOn: aBuilder
 				iconName: #configNew;
 				with: [ self buildSubmenu: 'Seaside scripts' on: aBuilder ].
 
-			(aBuilder item: #'Browse-settings')
+			(aBuilder item: #'Browse ')
 				order: 20;
 				iconName: #configNew;
-				with: [ self buildSubmenu: #'Browse-settings' on: aBuilder ].
+				with: [ self buildSubmenu: #'Browse ' on: aBuilder ].
 
 			(aBuilder item: #RecentWindows)
 				order: 23;

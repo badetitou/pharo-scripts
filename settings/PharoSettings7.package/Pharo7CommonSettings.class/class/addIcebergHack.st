@@ -1,8 +1,8 @@
 initialization
 addIcebergHack
-	<script>
-
 	"Add a hack to fetch a project if a commit is not found."
+
+	<script>
 	(IceGitCommit >> #project) ast
 		link:
 			(MetaLink new
@@ -10,19 +10,13 @@ addIcebergHack
 				selector: #projectAlt;
 				control: #instead).
 
-	"I want the Branch option of Iceberg to be here even in Detached Head or even if the source directory is missing."
-	IceTipCheckoutBranchCommand class methods 
-		detect: [ :method | method name = #canBeExecutedInContext: ] 
-		ifFound: [ :method | method ast
-		link:
-			(MetaLink new
-				metaObject: #receiver;
-				selector: #altCanBeExecutedInContext:;
-				arguments: #(#arguments);
-				control: #instead)].
-	
-	"In the «New branch from issue» panel of Iceberg, select origin as remote all the time and not mine or another remote."
-	(IceGitHubNewBranchFromIssuePanel >> #initializeWidgetsContents) ast
+	"In the «New branch from issue» panel of Iceberg, select origin as remote all the time and not mine or another remote.
+	In P9 the method was renamed."
+	(IceGitHubNewBranchFromIssuePanel
+		>>
+			(SystemVersion current major < 9
+				ifTrue: [ #initializeWidgetsContents ]
+				ifFalse: [ #initializePresenters ])) ast
 		link:
 			(MetaLink new
 				metaObject: #receiver;

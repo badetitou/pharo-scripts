@@ -9,4 +9,5 @@ initialize
 		resetMenuBar;
 		"removeSomeRules;"
 		"showProtocolsInSenderImplementors;"
-		installFurro
+		installFurro;
+		removeSomeRules
